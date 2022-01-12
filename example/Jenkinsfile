@@ -10,32 +10,37 @@ pipeline {
     stages {
         stage('Setup environemnt') {
             steps {
-                echo 'Setup env ...'
+                sh 'echo "Setup env ..."'
+                sh 'echo "empty folders.."'
             }
         }
 
         stage('Build') {
+            environment {
+                MY_NAME = "Maria"
+            }
             steps {
-                echo 'Building ...'
+                sh 'echo "Building ..."'
+                sh 'echo "Name: $MY_NAME"'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing ...'
+                sh 'echo "Testing ..."'
             }
         }
     }
 
     post {
         success {
-            echo "Success"
+            sh 'echo "Success"'
         }
         failure {
-            echo "Failure"
+            sh 'echo "Failure"'
         }
         always {
-            echo "############## End ###################"
+            sh 'echo "############## End ###################"'
         }
     }
 }

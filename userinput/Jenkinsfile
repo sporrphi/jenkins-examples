@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
+
+    parameters {
+        jenkins 
+    }
+
+    stages {
+        stage('Setup environemnt') {
+            steps {
+                echo 'Setup env ...'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Success"
+        }
+        failure {
+            echo "Failure"
+        }
+        always {
+            echo "############## End ###################"
+        }
+    }
+}
