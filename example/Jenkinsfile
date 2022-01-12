@@ -4,20 +4,20 @@ pipeline {
     stages {
         stage('Setup environemnt') {
             steps {
-                echo 'Delete files in target folder ...'
-                echo 'Setup environment ...'
+                echo 'Setup env ...'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Fetching ...'
                 echo 'Building ...'
             }
         }
 
         stage('Test') {
-            echo 'Testing ...'
+            steps {
+                echo 'Testing ...'
+            }
         }
     }
 }
