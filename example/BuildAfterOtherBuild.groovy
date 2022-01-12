@@ -2,7 +2,7 @@ node ('agent-1') {
     properties([
         pipelineTriggers([
             upstream(
-                threshold: hudson.model.Result.SUCCESS
+                threshold: hudson.model.Result.SUCCESS,
                 upstreamProjects: 'FIrst Example'
             )
         ])
