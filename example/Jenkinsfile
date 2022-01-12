@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Setup environemnt') {
+            steps {
+                echo 'Delete files in target folder ...'
+                echo 'Setup environment ...'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Fetching ...'
+                echo 'Building ...'
+            }
+        }
+
+        stage('Test') {
+            echo 'Testing ...'
+        }
+    }
+}
