@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
+
     stages {
         stage('Setup environemnt') {
             steps {
@@ -18,6 +24,18 @@ pipeline {
             steps {
                 echo 'Testing ...'
             }
+        }
+    }
+
+    post {
+        success {
+            echo "Success"
+        }
+        failure {
+            echo "Failure"
+        }
+        always {
+            echo "############## End ###################"
         }
     }
 }
