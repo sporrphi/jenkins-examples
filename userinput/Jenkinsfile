@@ -10,12 +10,12 @@ pipeline{
         }
         stage("Simple Userinput"){
             steps{
-                input "Continue to next stage?"
+                input message: "Continue to next stage?"
             }
         }
         stage("Message"){
             steps{
-                message "This is a simple message."
+                input message: "Do you agree?", ok: "Yes, I agree", submitter: jenkins,someotheruser
             }
         }
     }
