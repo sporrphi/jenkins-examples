@@ -1,33 +1,33 @@
-pipeline {
-    agent any
-
-    options {
-        timeout(time: 30, unit: 'MINUTES')
-        timestamps()
-        buildDiscarder(logRotator(numToKeepStr: '5'))
+pipeline{
+    agent{
+        label "master"
     }
-
-    parameters {
-        jenkins 
-    }
-
-    stages {
-        stage('Setup environemnt') {
-            steps {
-                echo 'Setup env ...'
+    stages{
+        stage("A"){
+            steps{
+                echo "========executing A========"
+            }
+        }
+        stage("Simple Userinput"){
+            steps{
+                input "Continue to next stage?"
+            }
+        }
+        stage("Message"){
+            steps{
+                message "This is a simple message."
             }
         }
     }
-
-    post {
-        success {
-            echo "Success"
+    post{
+        always{
+            echo "========always========"
         }
-        failure {
-            echo "Failure"
+        success{
+            echo "========pipeline executed successfully ========"
         }
-        always {
-            echo "############## End ###################"
+        failure{
+            echo "========pipeline execution failed========"
         }
     }
 }
