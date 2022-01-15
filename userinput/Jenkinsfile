@@ -15,7 +15,7 @@ pipeline{
         }
         stage("Message"){
             steps{
-                input message: "Do you agree?", ok: "Yes, I agree", submitter: jenkins,someotheruser
+                input message: "Do you agree?", ok: "Yes, I agree", submitter: "jenkins,someotheruser"
             }
         }
     }
