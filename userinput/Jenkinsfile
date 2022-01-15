@@ -21,7 +21,7 @@ pipeline{
         stage("Test for userinput with parameter") {
             steps{
                 input
-                    message: "Which branch?"
+                    message: "Which branch?",
                     id: "branchname",
                     ok: "continue",
                     parameters: [string]
