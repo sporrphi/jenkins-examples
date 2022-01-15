@@ -25,13 +25,12 @@ pipeline{
         }
         stage("Test for userinput with parameter") {
             steps{
-                input
-                    id: "branchname",
-                    message: "Which branch?",
-                    ok: "continue",
-                    parameters: [string]
-                
-                echo "$branchname"
+                script{
+                    env.BRANCHNAME = input message: "Enter branch name", ok: "Continue", parameters: [
+                        string(defaultValue: "main", description: "Branch name", name: "branch")
+                    ]
+                }                
+                echo "Building on branch ${env.BRANCHNAME}"
             }
         }
     }
