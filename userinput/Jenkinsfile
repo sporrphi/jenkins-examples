@@ -18,6 +18,17 @@ pipeline{
                 input message: "Do you agree?", ok: "Yes, I agree", submitter: "jenkins,someotheruser"
             }
         }
+        stage("Test for userinput with parameter") {
+            steps{
+                input
+                    message: "Which branch?"
+                    id: "branchname",
+                    ok: "continue",
+                    parameters: [string]
+                
+                echo "$branchname"
+            }
+        }
     }
     post{
         always{
