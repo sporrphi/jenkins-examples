@@ -1,6 +1,7 @@
 properties([
     parameters([
-        string(defaultValue: "main", description: "Enter branchname", name: "BRANCH")
+        string(defaultValue: "main", description: "Enter branchname", name: "BRANCH"),
+        string(name: "TESTCASE", defaultValue: "", description: "Enter testcase you want to execute.")
     ])
 ])
 
@@ -12,9 +13,6 @@ pipeline{
         timeout(time: 30, unit: 'MINUTES')
         timestamps()
         buildDiscarder(logRotator(numToKeepStr: '5'))
-    }
-    parameters{
-        string(name: "TESTCASE", defaultValue: "", description: "Enter testcase you want to execute.")
     }
     stages{
         stage("Fetch from Git") {
