@@ -1,3 +1,9 @@
+properties([
+    parameters([
+        string(defaultValue: "main", description: "Enter branchname", name: "BRANCH")
+    ])
+])
+
 pipeline{
     agent{
         label "master"
@@ -11,6 +17,11 @@ pipeline{
         string(name: "TESTCASE", defaultValue: "", description: "Enter testcase you want to execute.")
     }
     stages{
+        stage("Fetch from Git") {
+            steps{
+                echo "Fetch from branch ${params.BRANCH}."
+            }
+        }
         stage("Testcase Executioner"){
             steps{
                 echo "Executing Testcase ${params.TESTCASE}."
