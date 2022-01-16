@@ -7,14 +7,10 @@ pipeline{
         timestamps()
         buildDiscarder(logRotator(numToKeepStr: '5'))
     }
-    parameters{
-        string("TESTCASE", defaultValue: '', description: "Enter Testcase you want to execute.")
-    }
     stages{
         stage("A"){
             steps{
                 echo "========executing A========"
-                echo "Executing Testcase: ${params.TESTCASE}"
             }
         }
         stage("Simple Userinput"){
