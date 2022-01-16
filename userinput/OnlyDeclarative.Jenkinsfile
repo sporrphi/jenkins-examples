@@ -7,10 +7,10 @@ pipeline{
         timestamps()
         buildDiscarder(logRotator(numToKeepStr: '5'))
     }
-    parameters([
-        string(defaultValue: "main", description: "Enter branchname", name: "BRANCH"),
-        string(defaultValue: "", description: "Enter testcase you want to execute.",name: "TESTCASE")
-    ])
+    parameters{
+        string(defaultValue: "main", description: "Enter branchname", name: "BRANCH")
+        string(defaultValue: "", description: "Enter testcase you want to execute.", name: "TESTCASE")
+    }
     stages{
         stage("Fetch from Git") {
             steps{
