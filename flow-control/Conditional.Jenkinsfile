@@ -8,7 +8,7 @@ pipeline{
             name: 'BRANCH_NAME')
         choice(
             choices: 'DEBUG\nRELEASE\nTEST',
-            desscription: '',
+            description: '',
             name: 'BUILD_TYPE')
     }
 
