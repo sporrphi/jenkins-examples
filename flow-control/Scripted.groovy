@@ -12,7 +12,12 @@ node('master') {
             response = 'No user'
         }
 
+        sleep(time: 4, unit: 'SECONDS') {
+            // on interrupt do
+        }
         echo "Username = " + response
     }
+
+    
 
 }
