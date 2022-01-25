@@ -2,14 +2,14 @@ pipeline{
     agent any
 
     parameters {
-        string(defaultValue: ''
-                description: 'Branchname',
-                name: 'BRANCH_NAME')
+        string(
+            defaultValue: '',
+            description: 'Branchname',
+            name: 'BRANCH_NAME')
         choice(
             choices: 'DEBUG\nRELEASE\nTEST',
             desscription: '',
-            name: 'BUILD_TYPE'
-        )
+            name: 'BUILD_TYPE')
     }
 
     stages{
