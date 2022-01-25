@@ -1,4 +1,4 @@
-node('agent-1') {
+node() {
     def response
 
     stage('Timout Input') {
